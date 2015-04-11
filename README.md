@@ -9,10 +9,10 @@ Web test Project.
 (Java - Spring - Hibernate - Posgresql)
 
 Project made by maven:  
-mvn archetype:generate "-DgroupId=be.relin" "-DartifactId=eatown" "-DarchetypeArtifactId=maven-archetype-webapp" "-DinteractiveMode=false"
+```mvn archetype:generate "-DgroupId=be.relin" "-DartifactId=eatown" "-DarchetypeArtifactId=maven-archetype-webapp" "-DinteractiveMode=false"```
 
 Import to eclipse:  
-mvn eclipse:eclipse "-Dwtpversion=2.0"
+```mvn eclipse:eclipse "-Dwtpversion=2.0"```
 
 On Eclipse:  
 File -> Import -> General -> Existing Projects into Workspace

@@ -10,15 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Utilisateurs")
-public class Utilisateurs {
-	
-    @Id
+@Table(name="Lieux")
+public class Lieux {
+
+	@Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    private String name;
+    private String country;
+    private String town;
     
     public int getId() {
         return id;
@@ -27,10 +28,17 @@ public class Utilisateurs {
         this.id = id;
     }
     
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getTown() {
+		return town;
+	}
+	public void setTown(String town) {
+		this.town = town;
+	}
+    
 }
