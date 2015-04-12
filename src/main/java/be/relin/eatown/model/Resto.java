@@ -30,6 +30,7 @@ public class Resto {
 	private String name;
 	private String address;
 	private List<String> tag;
+	//private String phone;
 	
 	public int getId() {
 		return id;
@@ -55,6 +56,13 @@ public class Resto {
 	}
 	public void setTag(List<String> tag) {
 		this.tag = tag;
+	}
+	
+	
+	
+	public static List<Resto> recuperationResto() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
