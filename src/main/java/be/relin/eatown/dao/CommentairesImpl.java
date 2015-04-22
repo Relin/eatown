@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import be.relin.eatown.model.Commentaires;
+import be.relin.eatown.bean.Commentaires;
 
 public class CommentairesImpl implements CommentairesDAO{
 

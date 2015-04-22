@@ -2,7 +2,7 @@ package be.relin.eatown.dao;
 
 import java.util.List;
 
-import be.relin.eatown.model.Utilisateurs;
+import be.relin.eatown.bean.Utilisateurs;
 
 public interface UtilisateursDAO {
 

@@ -1,4 +1,4 @@
-package be.relin.eatown.model;
+package be.relin.eatown.bean;
 
 import java.io.Serializable;
 import java.util.Date;

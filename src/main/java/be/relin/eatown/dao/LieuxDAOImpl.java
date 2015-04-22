@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import be.relin.eatown.model.Lieux;
+import be.relin.eatown.bean.Lieux;
 
 public class LieuxDAOImpl implements LieuxDAO{
 

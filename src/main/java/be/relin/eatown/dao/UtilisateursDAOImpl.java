@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import be.relin.eatown.model.Utilisateurs;
+import be.relin.eatown.bean.Utilisateurs;
 
 public class UtilisateursDAOImpl implements UtilisateursDAO{
 
