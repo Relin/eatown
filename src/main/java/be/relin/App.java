@@ -6,14 +6,14 @@ import be.relin.eatown.util.HibernateUtil;
 import be.relin.eatown.bean.Utilisateurs;
 
 
-//Create table DBUSER (
+//Create table Utilisateurs (
 //		   USER_ID serial not null,
 //		   USERNAME varchar(20) not null,
 //		   FIRST_NAME varchar(25),
 //		   LAST_NAME varchar(25),
 //		   INSCRIPTION_DATE date not null
 //		);
-//insert into DBUSER (user_id, username, first_name, last_name, inscription_date) 
+//insert into Utilisateurs (user_id, username, first_name, last_name, inscription_date) 
 //VALUES (1, 'admin', 'Raphael', 'S', now());
 public class App {
 	public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class App {
 		user.setFirst_name("Raphael");
 		user.setLast_name("S");
 		user.setUsername("Relin");
-		user.setInscription(new Date());
+		user.setInscription_date(new Date());
  
 		session.save(user);
 		session.getTransaction().commit();

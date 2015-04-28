@@ -11,11 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Lieux")
-public class Lieux {
+public class Lieux implements java.io.Serializable{
 
-	@Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     private String country;

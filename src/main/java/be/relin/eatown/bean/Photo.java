@@ -11,15 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Commentaires")
-public class Commentaires implements java.io.Serializable{
-	
+@Table(name="Photo")
+public class Photo implements java.io.Serializable{
+
     private int id;
-    
-    private int note;
-    private String text;
-    private Date date;
-    
+	
+	private String name;
+	private String info;
+	private Date date;
+	private String file_name;
+	
 	public int getId() {
 		return id;
 	}
@@ -27,17 +28,17 @@ public class Commentaires implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	public int getNote() {
-		return note;
+	public String getName() {
+		return name;
 	}
-	public void setNote(int note) {
-		this.note = note;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getText() {
-		return text;
+	public String getInfo() {
+		return info;
 	}
-	public void setText(String text) {
-		this.text = text;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 	public Date getDate() {
 		return date;
@@ -45,5 +46,12 @@ public class Commentaires implements java.io.Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+
 	
 }
