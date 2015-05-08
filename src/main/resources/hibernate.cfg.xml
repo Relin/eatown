@@ -10,10 +10,17 @@
         <property name="hibernate.connection.username">raphael</property>
         <property name="hibernate.default_schema">public</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <!-- <mapping class="be.relin.eatown.bean.Commentaires"></mapping> -->
-        <!-- <mapping class="be.relin.eatown.bean.Lieux"></mapping> -->
-        <!-- <mapping class="be.relin.eatown.bean.Resto"></mapping> -->
+        <mapping class="be.relin.eatown.bean.Avatar"></mapping>
+        <mapping class="be.relin.eatown.bean.Chaine_resto"></mapping>
+        <mapping class="be.relin.eatown.bean.Commentaire"></mapping>
+        <mapping class="be.relin.eatown.bean.Country"></mapping>
+        <mapping class="be.relin.eatown.bean.Droit"></mapping>
+        <mapping class="be.relin.eatown.bean.Group"></mapping>
+        <mapping class="be.relin.eatown.bean.Logo"></mapping>
+        <mapping class="be.relin.eatown.bean.Photo"></mapping>
+        <mapping class="be.relin.eatown.bean.Resto"></mapping>
+        <mapping class="be.relin.eatown.bean.Tag"></mapping>
+        <mapping class="be.relin.eatown.bean.Town"></mapping>
         <mapping class="be.relin.eatown.bean.Utilisateurs"></mapping>
-        <mapping class="be.relin.eatown.bean.Avatar" />
     </session-factory>
 </hibernate-configuration>
