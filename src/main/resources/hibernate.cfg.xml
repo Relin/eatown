@@ -14,5 +14,6 @@
         <!-- <mapping class="be.relin.eatown.bean.Lieux"></mapping> -->
         <!-- <mapping class="be.relin.eatown.bean.Resto"></mapping> -->
         <mapping class="be.relin.eatown.bean.Utilisateurs"></mapping>
+        <mapping class="be.relin.eatown.bean.Avatar" />
     </session-factory>
 </hibernate-configuration>

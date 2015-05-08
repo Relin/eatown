@@ -11,10 +11,11 @@ import be.relin.eatown.bean.Utilisateurs;
 //		   USERNAME varchar(20) not null,
 //		   FIRST_NAME varchar(25),
 //		   LAST_NAME varchar(25),
-//		   INSCRIPTION_DATE date not null
+//		   INSCRIPTION_DATE date not null,
+//		   U_VALID boolean DEFAULT false
 //		);
-//insert into Utilisateurs (user_id, username, first_name, last_name, inscription_date) 
-//VALUES (1, 'admin', 'Raphael', 'S', now());
+//insert into Utilisateurs (user_id, username, first_name, last_name, inscription_date, u_valid) 
+//VALUES (1, 'admin', 'Raphael', 'S', now(), false);
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Maven + Hibernate + Oracle");

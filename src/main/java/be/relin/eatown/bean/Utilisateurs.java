@@ -1,20 +1,33 @@
 package be.relin.eatown.bean;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Type;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name="Utilisateurs")
+@Table(name="Utilisateurs", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "USERNAME") })
 public class Utilisateurs implements java.io.Serializable{
 	
     private int id;
@@ -24,23 +37,42 @@ public class Utilisateurs implements java.io.Serializable{
 	private String username;
 	private Date inscription_date;
 	private String password;
-	private Boolean valid;
+	private boolean valide;   //If annotation doesn't work try to replace boolean by int
+	//private int valid;      //Solving mapping problem by 1 true and 0 false
 	
+	private Set<Group> group = new HashSet<Group>(0);
+	private Avatar avatar;
+	private Set<Commentaire> commentaires = new HashSet<Commentaire>(0);
+	private Set<Resto> like = new HashSet<Resto>(0);
+	
+	/*Constructeur*/
 	public Utilisateurs() {
 	}
- 
-	public Utilisateurs(int id, String first_name, String last_name, String username, Date inscription_date, String password, Boolean valid) {
+
+
+	public Utilisateurs(int id, String first_name, String last_name,
+			String username, Date inscription_date, String password,
+			boolean valide, Set<Group> group, Avatar avatar,
+			Set<Commentaire> commentaires, Set<Resto> like) {
+		super();
 		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.username = username;
 		this.inscription_date = inscription_date;
 		this.password = password;
-		this.valid = valid;
+		this.valide = valide;
+		this.group = group;
+		this.avatar = avatar;
+		this.commentaires = commentaires;
+		this.like = like;
 	}
-	
+
+
+	/*Get/set*/
 	@Id
-	@Column(name = "USER_ID", unique = true, nullable = false, precision = 5, scale = 0)
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "USER_ID", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -82,6 +114,7 @@ public class Utilisateurs implements java.io.Serializable{
 		this.inscription_date = inscription_date;
 	}
 
+	@Column(name = "PASSWORD", nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -90,12 +123,57 @@ public class Utilisateurs implements java.io.Serializable{
 		this.password = password;
 	}
 
-	public Boolean getValid() {
-		return valid;
+	@Column(name = "U_VALID", nullable = false)
+	@Type(type ="org.hibernate.type.BooleanType")
+	public boolean isValide() {
+		return valide;
 	}
 
-	public void setValid(Boolean valid) {
-		this.valid = valid;
+	public void setValide(boolean valide) {
+		this.valide = valide;
 	}
-    
+
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateurs")
+	public Set<Group> getGroup() {
+		return group;
+	}
+
+	public void setGroup(Set<Group> group) {
+		this.group = group;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "AVATAR_ID", nullable = false)
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	public Set<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(Set<Commentaire> commentaires) {
+		this.commentaires = commentaires;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "USER_RESTO",
+			joinColumns = { @JoinColumn(name = "USER_ID", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "GROUP_ID", nullable = false, updatable = false) })
+	public Set<Resto> getLike() {
+		return like;
+	}
+
+	public void setLike(Set<Resto> like) {
+		this.like = like;
+	}
+	
+	
+	
 }

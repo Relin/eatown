@@ -2,11 +2,11 @@ package be.relin.eatown.dao;
 
 import java.util.List;
 
-import be.relin.eatown.bean.Commentaires;
+import be.relin.eatown.bean.Commentaire;
 
 public interface CommentairesDAO {
 
-	public void save(Commentaires c);
+	public void save(Commentaire c);
     
-    public List<Commentaires> list();
+    public List<Commentaire> list();
 }

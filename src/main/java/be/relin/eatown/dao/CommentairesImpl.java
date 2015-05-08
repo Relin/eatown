@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import be.relin.eatown.bean.Commentaires;
+import be.relin.eatown.bean.Commentaire;
 
 public class CommentairesImpl implements CommentairesDAO{
 
@@ -17,7 +17,7 @@ public class CommentairesImpl implements CommentairesDAO{
     }
 	
 	@Override
-	public void save(Commentaires c) {
+	public void save(Commentaire c) {
 		Session session = this.sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.persist(c);
@@ -26,9 +26,9 @@ public class CommentairesImpl implements CommentairesDAO{
 	}
 
 	@Override
-	public List<Commentaires> list() {
+	public List<Commentaire> list() {
 		Session session = this.sessionFactory.openSession();
-		List<Commentaires> commentairesList = session.createQuery("from Commentaires").list();
+		List<Commentaire> commentairesList = session.createQuery("from Commentaires").list();
         session.close();
         return commentairesList;
 	}

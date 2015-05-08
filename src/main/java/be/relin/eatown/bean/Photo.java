@@ -1,12 +1,9 @@
 package be.relin.eatown.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +11,8 @@ import javax.persistence.Table;
 @Table(name="Photo")
 public class Photo implements java.io.Serializable{
 
+	//TODO: make it for hibernate
+	
     private int id;
 	
 	private String name;
@@ -21,6 +20,8 @@ public class Photo implements java.io.Serializable{
 	private Date date;
 	private String file_name;
 	
+	@Id
+	@Column(name = "PHOTO_ID", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}

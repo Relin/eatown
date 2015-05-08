@@ -32,6 +32,6 @@ public class PasswordUtil {
 	
 	public static boolean CheckPassword() {
 		//TODO
-		return null;
+		return false;
 	}
 }
