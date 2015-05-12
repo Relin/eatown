@@ -38,14 +38,16 @@ public class Resto implements java.io.Serializable{
 	private Logo logo;
 	private Chaine_resto chaine_resto;
 	private Town town;
+	private Set<Photo> photos = new HashSet<Photo>(0);
 	
 	
 	public Resto() {}
 	
+
 	public Resto(int id, String name, String address, String tel, String www,
 			String description, Date last_verif, Set<Commentaire> commentaires,
 			Set<Utilisateurs> liked, Set<Tag> taged, Logo logo,
-			Chaine_resto chaine_resto, Town town) {
+			Chaine_resto chaine_resto, Town town, Set<Photo> photos) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,10 +62,10 @@ public class Resto implements java.io.Serializable{
 		this.logo = logo;
 		this.chaine_resto = chaine_resto;
 		this.town = town;
+		this.photos = photos;
 	}
 
-
-
+	
 	@Id
 	@Column(name = "RESTO_ID", unique = true, nullable = false)
 	public int getId() {
@@ -80,6 +82,7 @@ public class Resto implements java.io.Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@Column(name = "ADDRESS", nullable = false, length = 25)
 	public String getAddress() {
 		return address;
@@ -87,6 +90,7 @@ public class Resto implements java.io.Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	@Column(name = "TEL", nullable = true, length = 25)
 	public String getTel() {
 		return tel;
@@ -94,6 +98,7 @@ public class Resto implements java.io.Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	
 	@Column(name = "WWW", nullable = true, length = 100)
 	public String getWww() {
 		return www;
@@ -101,13 +106,15 @@ public class Resto implements java.io.Serializable{
 	public void setWww(String www) {
 		this.www = www;
 	}
-	@Column(name = "DESCRIPTION", nullable = true, length = 25)
+	
+	@Column(name = "DESCRIPTION", nullable = true, length = 100)
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "LAST_VERIF", nullable = false, length = 7)
 	public Date getLast_verif() {
@@ -116,6 +123,7 @@ public class Resto implements java.io.Serializable{
 	public void setLast_verif(Date last_verif) {
 		this.last_verif = last_verif;
 	}
+	
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "resto")
 	public Set<Commentaire> getCommentaires() {
@@ -173,11 +181,18 @@ public class Resto implements java.io.Serializable{
 	public void setTown(Town town) {
 		this.town = town;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "resto")
+	public Set<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(Set<Photo> photos) {
+		this.photos = photos;
+	}
 
 	
 	
 	/* Methode */
-	
 	public static List<Resto> recuperationResto() {
 		// TODO Auto-generated method stub
 		return null;
@@ -185,7 +200,7 @@ public class Resto implements java.io.Serializable{
 	
 	public static boolean CheckPhone(String num) {
 		boolean result = false;
-		String numRefined= num.replaceAll("[^0-9]", "");//suprime tout ce qui n'est pas un chiffre.
+		String numRefined= num.replaceAll("[^0-9]", "");//supprime tout ce qui n'est pas un chiffre.
 		if(numRefined.length()<13 && numRefined.length()>8) //test sur la taille du numéro de téléphone - peut etre rajouter un regex.
 			result = true;
 		return result;

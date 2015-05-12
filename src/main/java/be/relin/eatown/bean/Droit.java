@@ -24,11 +24,11 @@ public class Droit implements java.io.Serializable{
 	private String name;
 	private String description;
 	
-	private Set<Group> groups = new HashSet<Group>(0);
+	private Set<Groupe> groups = new HashSet<Groupe>(0);
 	
 	public Droit() {}
 	
-	public Droit(int id, String name, String description, Set<Group> groups) {
+	public Droit(int id, String name, String description, Set<Groupe> groups) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,11 +66,11 @@ public class Droit implements java.io.Serializable{
 	@JoinTable(name = "GROUP_DROIT",
 			joinColumns = { @JoinColumn(name = "DROIT_ID", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "GROUP_ID", nullable = false, updatable = false) })
-	public Set<Group> getGroups() {
+	public Set<Groupe> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Set<Group> groups) {
+	public void setGroups(Set<Groupe> groups) {
 		this.groups = groups;
 	}
 	

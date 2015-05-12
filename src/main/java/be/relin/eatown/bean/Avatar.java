@@ -27,19 +27,19 @@ public class Avatar implements java.io.Serializable{
 	private boolean from_user; //Si oui elle peux etre supprimer
 	
 	private Set<Utilisateurs> utilisateurs = new HashSet<Utilisateurs>(0);
-	private Set<Group> group = new HashSet<Group>(0);
+	private Set<Groupe> groupe = new HashSet<Groupe>(0);
 	
 	public Avatar() {}
 	
 	public Avatar(int id, String name, String file_name, boolean from_user,
-			Set<Utilisateurs> utilisateurs, Set<Group> group) {
+			Set<Utilisateurs> utilisateurs, Set<Groupe> groupe) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.file_name = file_name;
 		this.from_user = from_user;
 		this.utilisateurs = utilisateurs;
-		this.group = group;
+		this.groupe = groupe;
 	}
 
 	
@@ -90,11 +90,11 @@ public class Avatar implements java.io.Serializable{
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avatar")
-	public Set<Group> getGroup() {
-		return group;
+	public Set<Groupe> getGroupe() {
+		return groupe;
 	}
-	public void setGroup(Set<Group> group) {
-		this.group = group;
+	public void setGroupe(Set<Groupe> groupe) {
+		this.groupe = groupe;
 	}
 	
 	

@@ -15,7 +15,7 @@
         <mapping class="be.relin.eatown.bean.Commentaire"></mapping>
         <mapping class="be.relin.eatown.bean.Country"></mapping>
         <mapping class="be.relin.eatown.bean.Droit"></mapping>
-        <mapping class="be.relin.eatown.bean.Group"></mapping>
+        <mapping class="be.relin.eatown.bean.Groupe"></mapping>
         <mapping class="be.relin.eatown.bean.Logo"></mapping>
         <mapping class="be.relin.eatown.bean.Photo"></mapping>
         <mapping class="be.relin.eatown.bean.Resto"></mapping>

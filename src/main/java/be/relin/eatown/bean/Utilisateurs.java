@@ -37,23 +37,22 @@ public class Utilisateurs implements java.io.Serializable{
 	private String username;
 	private Date inscription_date;
 	private String password;
-	private boolean valide;   //If annotation doesn't work try to replace boolean by int
-	//private int valid;      //Solving mapping problem by 1 true and 0 false
+	private boolean valide;
 	
-	private Set<Group> group = new HashSet<Group>(0);
+	private Set<Groupe> groupe = new HashSet<Groupe>(0);
 	private Avatar avatar;
 	private Set<Commentaire> commentaires = new HashSet<Commentaire>(0);
 	private Set<Resto> like = new HashSet<Resto>(0);
+	private Set<Photo> photos = new HashSet<Photo>(0);
 	
 	/*Constructeur*/
 	public Utilisateurs() {
 	}
 
-
 	public Utilisateurs(int id, String first_name, String last_name,
 			String username, Date inscription_date, String password,
-			boolean valide, Set<Group> group, Avatar avatar,
-			Set<Commentaire> commentaires, Set<Resto> like) {
+			boolean valide, Set<Groupe> groupe, Avatar avatar,
+			Set<Commentaire> commentaires, Set<Resto> like, Set<Photo> photos) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -62,10 +61,11 @@ public class Utilisateurs implements java.io.Serializable{
 		this.inscription_date = inscription_date;
 		this.password = password;
 		this.valide = valide;
-		this.group = group;
+		this.groupe = groupe;
 		this.avatar = avatar;
 		this.commentaires = commentaires;
 		this.like = like;
+		this.photos = photos;
 	}
 
 
@@ -109,7 +109,6 @@ public class Utilisateurs implements java.io.Serializable{
 	public Date getInscription_date() {
 		return inscription_date;
 	}
-
 	public void setInscription_date(Date inscription_date) {
 		this.inscription_date = inscription_date;
 	}
@@ -118,7 +117,6 @@ public class Utilisateurs implements java.io.Serializable{
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -128,19 +126,18 @@ public class Utilisateurs implements java.io.Serializable{
 	public boolean isValide() {
 		return valide;
 	}
-
 	public void setValide(boolean valide) {
 		this.valide = valide;
 	}
 
 	
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateurs")
-	public Set<Group> getGroup() {
-		return group;
+	public Set<Groupe> getGroupe() {
+		return groupe;
 	}
-
-	public void setGroup(Set<Group> group) {
-		this.group = group;
+	public void setGroupe(Set<Groupe> groupe) {
+		this.groupe = groupe;
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -148,7 +145,6 @@ public class Utilisateurs implements java.io.Serializable{
 	public Avatar getAvatar() {
 		return avatar;
 	}
-
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
 	}
@@ -157,7 +153,6 @@ public class Utilisateurs implements java.io.Serializable{
 	public Set<Commentaire> getCommentaires() {
 		return commentaires;
 	}
-
 	public void setCommentaires(Set<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}
@@ -169,9 +164,16 @@ public class Utilisateurs implements java.io.Serializable{
 	public Set<Resto> getLike() {
 		return like;
 	}
-
 	public void setLike(Set<Resto> like) {
 		this.like = like;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	public Set<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(Set<Photo> photos) {
+		this.photos = photos;
 	}
 	
 	

@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="Group",
 		uniqueConstraints = {@UniqueConstraint(columnNames = "NAME") })
-public class Group implements java.io.Serializable{
+public class Groupe implements java.io.Serializable{
 
     private int id;
     
@@ -29,9 +29,9 @@ public class Group implements java.io.Serializable{
 	private Avatar avatar;
 	private Set<Droit> droits = new HashSet<Droit>(0);
 	
-	public Group() {}
+	public Groupe() {}
 	
-	public Group(int id, String name, Set<Utilisateurs> utilisateurs,
+	public Groupe(int id, String name, Set<Utilisateurs> utilisateurs,
 			Avatar avatar, Set<Droit> droits) {
 		super();
 		this.id = id;
@@ -43,7 +43,7 @@ public class Group implements java.io.Serializable{
 
 
 	@Id
-	@Column(name = "GROUP_ID", unique = true, nullable = false)
+	@Column(name = "GROUPE_ID", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
@@ -63,13 +63,12 @@ public class Group implements java.io.Serializable{
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "USER_GROUP",
-			joinColumns = { @JoinColumn(name = "GROUP_ID", nullable = false, updatable = false) }, 
+	@JoinTable(name = "USER_GROUPE",
+			joinColumns = { @JoinColumn(name = "GROUPE_ID", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "USER_ID", nullable = false, updatable = false) })
 	public Set<Utilisateurs> getUtilisateurs() {
 		return utilisateurs;
 	}
-
 	public void setUtilisateurs(Set<Utilisateurs> utilisateurs) {
 		this.utilisateurs = utilisateurs;
 	}
@@ -79,19 +78,17 @@ public class Group implements java.io.Serializable{
 	public Avatar getAvatar() {
 		return avatar;
 	}
-
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "GROUP_DROIT",
-			joinColumns = { @JoinColumn(name = "GROUP_ID", nullable = false, updatable = false) }, 
+	@JoinTable(name = "GROUPE_DROIT",
+			joinColumns = { @JoinColumn(name = "GROUPE_ID", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "DROIT_ID", nullable = false, updatable = false) })
 	public Set<Droit> getDroits() {
 		return droits;
 	}
-
 	public void setDroits(Set<Droit> droits) {
 		this.droits = droits;
 	}
